@@ -67,7 +67,7 @@ class Solution {
         }
     }
 
-    func calc(n1: String, n2: String, op: String) -> Int {
+    private func calc(n1: String, n2: String, op: String) -> Int {
         let i1 = Int(n1) ?? 1
         let i2 = Int(n2) ?? 1
 
