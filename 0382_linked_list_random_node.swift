@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/linked-list-random-node/
+// https://florian.github.io/reservoir-sampling/
 
 class Solution {
 	private let head: ListNode
