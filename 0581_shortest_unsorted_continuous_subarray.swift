@@ -46,3 +46,37 @@ class Solution {
         return nums.count - leftStack.count - rightStack.count
     }
 }
+
+
+// Better solution
+class Solution2 {
+    func findUnsortedSubarray(_ nums: [Int]) -> Int {
+        var prev = Int.min
+        var disorderEnd = -1
+
+        for i in 0..<nums.count {
+            if nums[i] >= prev {
+                prev = nums[i]
+            } else {
+                disorderEnd = i
+            }
+        }
+
+        if disorderEnd == -1 {
+            // means the array is already sorted
+            return 0
+        }
+
+        prev = Int.max
+        var disorderStart = -1
+        for i in stride(from: nums.count - 1, through: 0, by: -1) {
+            if nums[i] <= prev {
+                prev = nums[i]
+            } else {
+                disorderStart = i
+            }
+        }
+
+        return disorderEnd - disorderStart + 1
+    }
+}
