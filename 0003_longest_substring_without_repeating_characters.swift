@@ -1,33 +1,33 @@
-// https://leetcode.com/problems/longest-substring-without-repeating-characters/
-
 class Solution {
-    var maxLength = 0
-    var array = [String]()
+	func lengthOfLongestSubstring(_ s: String) -> Int {
+		guard !s.isEmpty else { return 0 }
 
-    func lengthOfLongestSubstring(_ s: String) -> Int {
-        array = Array(s).map { String($0) }
+		let arr = Array(s)
+		var l = 0
+		var r = 1
+		var set: Set<Character> = [arr[l]]
+		var result = 1
 
-        for i in 0..<array.count {
-            check(index: i, set: Set())
-        }
+		while r < arr.count {
+			let newChar = arr[r]
+			if set.contains(newChar) {
+				while true {
+					if arr[l] == newChar {
+						l += 1
+						break
+					} else {
+						set.remove(arr[l])
+						l += 1
+					}
+				}
+			} else {
+				set.insert(newChar)
+				result = max(result, r - l + 1)
+			}
 
-        return maxLength
-    }
+			r += 1
+		}
 
-    private func check(index: Int, set: Set<String>) {
-        if index >= array.count {
-            maxLength = max(maxLength, set.count)
-            return
-        }
-
-        let letter = array[index]
-        if set.contains(letter) {
-            maxLength = max(maxLength, set.count)
-            return
-        } else {
-            var newSet = set
-            newSet.insert(letter)
-            check(index: index + 1, set: newSet)
-        }
-    }
+		return result
+	}
 }
