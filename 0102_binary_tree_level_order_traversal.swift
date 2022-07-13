@@ -17,7 +17,7 @@
  */
 class Solution {
 	func levelOrder(_ root: TreeNode?) -> [[Int]] {
-		guard var root = root else { return [] }
+		guard let root = root else { return [] }
 
 		var layer = [root]
 		var result = [[root.val]]
