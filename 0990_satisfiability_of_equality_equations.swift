@@ -15,7 +15,7 @@ class Solution {
 			if equation[1] == "=" {
 				// equal
 				guard relationship1 !== relationship2 else { continue }
-				if relationship1.unequals.contains(relationship2) || relationship2.unequals.contains(relationship1) {
+				if relationship1.unequals.contains(relationship2) {
 					return false
 				}
 				// merge two relationships
