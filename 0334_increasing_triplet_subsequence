@@ -1,0 +1,18 @@
+// https://leetcode.com/problems/increasing-triplet-subsequence/
+
+class Solution {
+	func increasingTriplet(_ nums: [Int]) -> Bool {
+		var smallestFirstNum = Int.max
+		var smallestSecondNum = Int.max
+		for num in nums {
+			if num > smallestSecondNum {
+				return true
+			} else if num > smallestFirstNum && num < smallestSecondNum {
+				smallestSecondNum = num
+			} else if num < smallestFirstNum {
+				smallestFirstNum = num
+			}
+		}
+		return false
+	}
+}
