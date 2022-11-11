@@ -2,16 +2,14 @@
 
 class Solution {
 	func removeDuplicates(_ nums: inout [Int]) -> Int {
-		var set = Set<Int>()
-		for (i, num) in nums.enumerated() {
-			if !set.contains(num) {
-				set.insert(num)
+		var prev = Int.max
+		for i in stride(from: nums.count - 1, through: 0, by: -1) {
+			if nums[i] == prev {
+				nums.remove(at: i)
 			} else {
-				nums[i] = Int.min
+				prev = nums[i]
 			}
 		}
-
-		nums = nums.compactMap { $0 == Int.min ? nil : $0 }
-		return set.count
+		return nums.count
 	}
 }
