@@ -31,3 +31,15 @@ class Solution {
         }
     }
 }
+
+class Solution2 {
+	func middleNode(_ head: ListNode?) -> ListNode? {
+		var slow = head
+		var fast = head?.next
+		while fast != nil {
+			slow = slow?.next
+			fast = fast?.next?.next
+		}
+		return slow
+	}
+}
