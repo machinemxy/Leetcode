@@ -83,7 +83,7 @@ class LFUCache {
             node.next = nil
             newGroup.tail = node
         }
-        if minGroup === currentGroup && currentGroup.head == nil && currentGroup.tail == nil {
+        if minGroup === currentGroup && currentGroup.head == nil {
             minGroup = newGroup
         }
     }
