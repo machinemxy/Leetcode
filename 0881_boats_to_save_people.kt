@@ -2,6 +2,26 @@
 
 class Solution {
     fun numRescueBoats(people: IntArray, limit: Int): Int {
+        people.sort()
+        var l = 0
+        var r = people.size - 1
+        var boats = 0
+        while (l <= r) {
+            if (people[l] + people[r] <= limit) {
+                l++
+                r--
+            } else {
+                r--
+            }
+            boats++
+        }
+        return boats
+    }
+}
+
+// Not good solution
+class Solution2 {
+    fun numRescueBoats(people: IntArray, limit: Int): Int {
         val sortedPeople = arrayListOf<Int>()
         for (person in people) {
             sortedPeople.add(person)
