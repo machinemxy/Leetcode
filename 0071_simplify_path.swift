@@ -8,7 +8,7 @@ class Solution {
 			if component == "" { continue }
 			if component == "." { continue }
 			if component == ".." {
-				if storage.count > 0 {
+				if !storage.isEmpty {
 					storage.removeLast()
 				}
 			} else {
@@ -16,7 +16,7 @@ class Solution {
 			}
 		}
 
-		if storage.count == 0 {
+		if storage.isEmpty {
 			return "/"
 		} else {
 			var result = ""
