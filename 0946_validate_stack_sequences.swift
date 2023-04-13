@@ -6,9 +6,9 @@ class Solution {
 		var popped = popped
 		var stack = [Int]()
 
-		while popped.count > 0 {
-			if stack.count == 0 {
-				if pushed.count == 0 {
+		while !popped.isEmpty {
+			if stack.isEmpty {
+				if pushed.isEmpty {
 					return false
 				} else {
 					stack.append(pushed.first!)
@@ -19,7 +19,7 @@ class Solution {
 					stack.removeLast()
 					popped.removeFirst()
 				} else {
-					if pushed.count == 0 {
+					if pushed.isEmpty {
 						return false
 					} else {
 						stack.append(pushed.first!)
