@@ -3,8 +3,8 @@
 class Solution {
 	func shortestPathBinaryMatrix(_ grid: [[Int]]) -> Int {
 		let n = grid.count
-		if n == 1 { return 1 }
 		if grid[0][0] == 1 { return -1 }
+		if n == 1 { return 1 }
 
 		let visitedRow = Array(repeating: false, count: n)
 		var visited = Array(repeating: visitedRow, count: n)
