@@ -15,29 +15,13 @@ class Solution {
         while (deque.isNotEmpty()) {
             val node = deque.removeFirst()
             node.left?.let { left ->
-                paths[node.`val`]?.let {
-                    it.add(left.`val`)
-                } ?: run {
-                    paths[node.`val`] = mutableSetOf(left.`val`)
-                }
-                paths[left.`val`]?.let {
-                    it.add(node.`val`)
-                } ?: run {
-                    paths[left.`val`] = mutableSetOf(node.`val`)
-                }
+                paths.getOrPut(node.`val`) { mutableSetOf() }.add(left.`val`)
+                paths.getOrPut(left.`val`) { mutableSetOf() }.add(node.`val`)
                 deque.add(left)
             }
             node.right?.let { right ->
-                paths[node.`val`]?.let {
-                    it.add(right.`val`)
-                } ?: run {
-                    paths[node.`val`] = mutableSetOf(right.`val`)
-                }
-                paths[right.`val`]?.let {
-                    it.add(node.`val`)
-                } ?: run {
-                    paths[right.`val`] = mutableSetOf(node.`val`)
-                }
+                paths.getOrPut(node.`val`) { mutableSetOf() }.add(right.`val`)
+                paths.getOrPut(right.`val`) { mutableSetOf() }.add(node.`val`)
                 deque.add(right)
             }
         }
@@ -50,7 +34,7 @@ class Solution {
             val n = result.size
             for (i in 1..n) {
                 val node = result.removeFirst()
-                paths[node]?.forEach { 
+                paths[node]?.forEach {
                     if (!visited.contains(it)) {
                         visited.add((it))
                         result.add(it)
