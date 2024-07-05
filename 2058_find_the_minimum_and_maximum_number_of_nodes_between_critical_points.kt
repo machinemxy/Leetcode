@@ -18,11 +18,7 @@ class Solution {
         var i = 1
         var node = head!!.next!!
         var prevNode = head!!
-        while (true) {
-            if (node.next == null) {
-                break
-            }
-
+        while (node.next != null) {
             if ((node.`val` > prevNode.`val` && node.`val` > node.next!!.`val`) || (node.`val` < prevNode.`val` && node.`val` < node.next!!.`val`)) {
                 if (firstCriticalPointId == -1) {
                     firstCriticalPointId = i
